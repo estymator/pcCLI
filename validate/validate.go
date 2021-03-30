@@ -10,6 +10,7 @@ import (
 )
 
 func init() {
+	// add custom --help messega
 	flag.Usage = func() {
 		fmt.Printf("Synopsis: \n \t%s command [options]\n", os.Args[0])
 		fmt.Printf("Description: \n \t Choose one of these commands:\n")
@@ -24,16 +25,18 @@ func init() {
 }
 
 func checkFilename() (string, error) {
+	// run command require file param
 	if len(os.Args) != 4 {
 		return "", errors.New("wrong --file argument, check help message")
 	}
 
 	filename := string(os.Args[3])
-
+	// file param must be .html file
 	if filepath.Ext(filename) != ".html" {
 		return "", errors.New("wrong file extension, required .html")
 	}
 
+	// check if file exist
 	if _, err := os.Stat(filename); err != nil && os.IsNotExist(err) {
 		return "", errors.New("given file doesn't exist")
 	}
@@ -45,7 +48,7 @@ func checkFilename() (string, error) {
 func CheckCommand() (string, error) {
 
 	flag.Parse()
-
+	// require at least one command
 	if len(os.Args) < 2 {
 		return "", errors.New("wrong list of arguments")
 	}
