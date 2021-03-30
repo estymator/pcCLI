@@ -7,6 +7,7 @@ import (
 	"os"
 
 	valid "github.com/estymator/pcCLI/validate"
+	web "github.com/estymator/pcCLI/web"
 )
 
 const CLI_VERSION string = "v1.0.0"
@@ -25,6 +26,6 @@ func main() {
 	case "version":
 		fmt.Printf("version: %s", CLI_VERSION)
 	default:
-		fmt.Print("Run")
+		web.ServeFile(command)
 	}
 }
