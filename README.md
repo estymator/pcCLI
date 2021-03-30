@@ -1,18 +1,19 @@
-###Desc
+# pcCLI
+## Desc
 Simple CLI app for serving http files on server (port 8082) write in GoLang
 
-##Install
+## Install
 in root dir type go build to get exec file
 to install as a global command type go install
 
-##Usage
+## Usage
 Commands:
-#help
+### help
 prints help messeges
 
-#version
+### version
 prints version information
 
-#run
+### run
 --file <filename.html> [string]
 serve filename.html on web serwer(port 8082)

@@ -24,13 +24,7 @@ func init() {
 	log.SetFlags(0)
 }
 
-func checkFilename() (string, error) {
-	// run command require file param
-	if len(os.Args) != 4 {
-		return "", errors.New("wrong --file argument, check help message")
-	}
-
-	filename := string(os.Args[3])
+func checkFilename(filename string) (string, error) {
 	// file param must be .html file
 	if filepath.Ext(filename) != ".html" {
 		return "", errors.New("wrong file extension, required .html")
@@ -57,7 +51,13 @@ func CheckCommand() (string, error) {
 
 	switch arg {
 	case "run":
-		validFilename, err := checkFilename()
+		// run command require file arg
+		if len(os.Args) != 4 {
+			return "", errors.New("wrong --file argument, check help message")
+		}
+		//extract filename
+		filename := string(os.Args[3])
+		validFilename, err := checkFilename(filename)
 		if err != nil {
 			return "", err
 		}
