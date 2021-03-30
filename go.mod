@@ -1,3 +1,3 @@
-module pcCLI
+module github.com/estymator/pcCLI
 
 go 1.14

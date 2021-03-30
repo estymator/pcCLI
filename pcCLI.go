@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
+	valid "github.com/estymator/pcCLI/validate"
 )
 
 func main() {
-	fmt.Print("Hello")
+	valid.CheckCommand()
 }
